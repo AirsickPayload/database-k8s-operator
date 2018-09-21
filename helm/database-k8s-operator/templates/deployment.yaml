@@ -1,3 +1,4 @@
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -39,7 +40,7 @@ spec:
           imagePullPolicy: Always
           env:
             - name: WATCH_NAMESPACE
-              value: {{ .Values.watchNamespace }}
+              value: {{ .Values.watchNamespace | quote }}
             - name: OPERATOR_NAME
               value: "database-k8s-operator"
           {{- if .Values.resources }}
